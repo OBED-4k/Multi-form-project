@@ -36,20 +36,47 @@ const name = document.getElementById("Name").value.trim();
   }
 
   // PHONE
-    const allowedCodes = ["+234", "+1", "+44", "+91", "+81", "+61"];
-  const validCode = allowedCodes.some(code => number.startsWith(code));
+const allowedCodes = ["+234", "+1", "+44", "+91", "+81", "+61"];
+const matchedCode = allowedCodes.find(code => number.startsWith(code));
 
-  if (!validCode) {
-    numError.textContent = "Use valid country code (+234 etc)";
-    numError.style.color = "red"
-    return;
-  }
+if (!matchedCode) {
+  numError.textContent = "Use valid country code (+234 etc)";
+  numError.style.color = "red";
+  return;
+}
 
-  if (number.length < 10) {
-    numError.textContent = "Invalid number length";
-    numError.style.color = "red"
-    return;
-  }
+// Remove country code
+const localNumber = number.slice(matchedCode.length);
+
+// Check if it's only digits
+if (!/^\d+$/.test(localNumber)) {
+  numError.textContent = "Phone must contain only digits after code";
+  numError.style.color = "red";
+  return;
+}
+
+// Enforce EXACT length (10 digits)
+if (localNumber.length !== 10) {
+  numError.textContent = "Number must be exactly 10 digits after country code";
+  numError.style.color = "red";
+  return;
+}
+  // PHONE
+//     const allowedCodes = ["+234", "+1", "+44", "+91", "+81", "+61"];
+//   const validCode = allowedCodes.some(code => number.startsWith(code));
+  
+
+//   if (!validCode) {
+//     numError.textContent = "Use valid country code (+234 etc)";
+//     numError.style.color = "red"
+//     return;
+//   }
+
+//   if (number.length < 10) {
+//     numError.textContent = "Invalid number length";
+//     numError.style.color = "red"
+//     return;
+//   }
 
   // SUCCESS
   console.log("Submitted:", { name, email, number });

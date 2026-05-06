@@ -13,7 +13,7 @@ The designs were created to the following widths:
 
 ### Primary
 
-- Blue 950: hsl(213, 96%, 18%) / bg-[#062359]
+- Blue 950: hsl(213, 96%, 18%) / bg-#062359
 - Purple 600: hsl(243, 100%, 62%)
 - Blue 300: hsl(228, 100%, 84%)
 - Blue 200: hsl(206, 94%, 87%)
