@@ -4,6 +4,10 @@ const nameError = document.getElementById("use");
 const emailError = document.getElementById("ema");
 const numError = document.getElementById("num");
 
+document.querySelector(".mobile-btn").addEventListener("click", () => {
+  form.requestSubmit();
+});
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -54,7 +58,7 @@ const name = document.getElementById("Name").value.trim();
 });
   
 
-    
+
 
 
 
