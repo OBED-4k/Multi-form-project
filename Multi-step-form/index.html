@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MultiForm</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main class="card">
+      <!-- Left Side -->
+      <div class="sidebar">
+        <div class="steps">
+          <div class="step active" id="s1">
+            <p class="step-num">1</p>
+            <div>
+              <p class="stepCount">STEP 1</p>
+              <p class="step-name">YOUR INFO</p>
+            </div>
+          </div>
+
+          <div class="step" id="s2">
+            <p class="step-num">2</p>
+            <div>
+              <p class="stepCount">STEP 2</p>
+              <p class="step-name">SELECT PLAN</p>
+            </div>
+          </div>
+
+          <div class="step" id="s3">
+            <p class="step-num">3</p>
+            <div>
+              <p class="stepCount">STEP 3</p>
+              <p class="step-name">ADD-ONS</p>
+            </div>
+          </div>
+
+          <div class="step" id="s4">
+            <p class="step-num">4</p>
+            <div>
+              <p class="stepCount">STEP 4</p>
+              <p class="step-name">SUMMARY</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side -->
+      <!-- Content -->
+      <div class="content">
+        <form class="panel active" id="panel-1">
+          <h1>Personal Info</h1>
+          <p class="subtitle">
+            Please Provide your name, email address, and phone number.
+          </p>
+
+          <div class="field" id="f-name">
+            <label for="inp-name">Name</label>
+            <input placeholder="e.g. Stephen King" id="inp-name" type="text" />
+            <span class="err-msg">This field is required</span>
+          </div>
+
+          <div class="field" id="f-email">
+            <label for="email">Email Address</label>
+            <input
+              id="inp-email"
+              type="email"
+              placeholder="e.g. StephenKing@lorem.com"
+            />
+            <span class="err-msg">Please enter a valid email</span>
+          </div>
+
+          <div class="field" id="f-phone">
+            <label for="inp-name"> Phone Number </label>
+            <input
+              placeholder="e.g. +1 234 567 890"
+              id="inp-phone"
+              type="tel"
+            />
+            <span class="err-msg">This field is required</span>
+          </div>
+          <div class="nav">
+            <div></div>
+            <button class="btn-next" type="button" onclick="validateStep1()">
+              Next Step
+            </button>
+          </div>
+        </form>
+
+        <!-- Step two Monthly -->
+        <div class="panel" id="panel-2">
+          <h1>Select your plan</h1>
+          <p class="subtitle">
+            You have the option of monthly or yearly billing
+          </p>
+
+          <div class="plans">
+            <div
+              class="plan-card selected"
+              data-plan="Arcade"
+              onclick="selectPlan(this)"
+            >
+              <img
+                class="plan-icon"
+                src="./assets/images/icon-arcade.svg"
+                alt=""
+              />
+              <h2 class="plan-name">Arcade</h2>
+              <p class="plan-price" id="pr-arcade">$9/mo</p>
+              <p class="plan-saving" id="sv-arcade">2 month free</p>
+            </div>
+
+            <div
+              class="plan-card"
+              data-plan="Advanced"
+              onclick="selectPlan(this)"
+            >
+              <img
+                class="plan-icon"
+                src="./assets/images/icon-advanced.svg"
+                alt="Advanced"
+              />
+              <h2 class="plan-name">Advanced</h2>
+              <p class="plan-price" id="pr-advanced">$12/mo</p>
+              <p class="plan-saving" id="sv-advanced">2 month free</p>
+            </div>
+
+            <div class="plan-card" data-plan="Pro" onclick="selectPlan(this)">
+              <img
+                class="plan-icon"
+                src="./assets/images/icon-pro.svg"
+                alt=""
+              />
+              <h2 class="plan-name">Pro</h2>
+              <p class="plan-price" id="pr-pro">$15/mo</p>
+              <p class="plan-saving" id="sv-pro">2 month free</p>
+            </div>
+          </div>
+
+          <div class="billing-toggle">
+            <span class="tog-lbl on" id="lbl-mo">Monthly</span>
+            <div
+              class="toggle"
+              id="billingToggle"
+              onclick="toggleBilling()"
+            ></div>
+            <span class="tog-lbl" id="lbl-yr">Yearly</span>
+          </div>
+          <div class="nav">
+            <button class="btn-back" type="button" onclick="goTo(1)">
+              Go Back
+            </button>
+            <button class="btn-next" type="button" onclick="goTo(3)">
+              Next Step
+            </button>
+          </div>
+        </div>
+
+        <!-- ADD-ONS -->
+        <div class="panel" id="panel-3">
+          <h1>Pick add-ons</h1>
+          <p class="subtitle">Add-ons help enhance your gaming experience.</p>
+
+          <div class="addons">
+            <div
+              class="addon checked"
+              id="ao-online"
+              onclick="toggleAddon(this)"
+            >
+              <div class="chk"></div>
+              <div class="addon-info">
+                <p class="addon-name">online service</p>
+                <p class="addon-desc">Access to multiplayer games</p>
+              </div>
+              <p class="addon-price" id="aop-online">+$1/mo</p>
+            </div>
+
+            <div
+              class="addon checked"
+              id="ao-storage"
+              onclick="toggleAddon(this)"
+            >
+              <div class="chk"></div>
+              <div class="addon-info">
+                <p class="addon-name">Larger storage</p>
+                <p class="addon-desc">Extra 1TB of cloud save</p>
+              </div>
+              <p class="addon-price" id="aop-storage">+$2/mo</p>
+            </div>
+
+            <div class="addon" id="ao-profile" onclick="toggleAddon(this)">
+              <div class="chk"></div>
+              <div class="addon-info">
+                <p class="addon-name">Customizable profile</p>
+                <p class="addon-desc">Custom theme on your profile</p>
+              </div>
+              <p class="addon-price" id="aop-profile">+$2/mo</p>
+            </div>
+          </div>
+          <div class="nav">
+            <button class="btn-back" type="button" onclick="goTo(2)">
+              Go Back
+            </button>
+            <button
+              class="btn-next"
+              type="button"
+              onclick="
+                buildSummary();
+                goTo(4);
+              "
+            >
+              Next Step
+            </button>
+          </div>
+        </div>
+
+        <!-- PANEL 4: SUMMARY -->
+        <div class="panel" id="panel-4">
+          <h1>Finishing up</h1>
+          <p class="subtitle">
+            Double-check everything looks OK before confirming.
+          </p>
+          <div class="summary-box">
+            <div class="sum-plan">
+              <div>
+                <p class="sum-plan-name" id="sum-name">Arcade (Monthly)</p>
+                <span class="change-link" onclick="goTo(2)">Change</span>
+              </div>
+              <p class="sum-plan-price" id="sum-price">$9/mo</p>
+            </div>
+            <div id="sum-addons"></div>
+          </div>
+
+          <div class="sum-total">
+            <p class="total-lbl" id="sum-total-lbl">Total(per month)</p>
+            <p class="total-amt" id="sum-total-amt">+$12/mo</p>
+          </div>
+
+          <div class="nav">
+            <button class="btn-back" type="button" onclick="goTo(3)">
+              Go Back
+            </button>
+            <button
+              class="btn-next confirm-btn"
+              type="button"
+              onclick="goTo(5)"
+            >
+              Confirm
+            </button>
+          </div>
+        </div>
+
+        <!-- PANEL 5: THANK YOU -->
+        <div class="panel" id="panel-ty">
+          <img
+            class="ty-icon"
+            src="./assets/images/icon-thank-you.svg"
+            alt=""
+          />
+          <h1>Thank you!</h1>
+          <p>
+            Thanks for confirming your subscription! We hope you have fun using
+            our platform. If you ever need support, please feel free to email us
+            at <strong>support@loremgaming.com</strong>.
+          </p>
+        </div>
+      </div>
+      <!-- /content -->
+    </main>
+    <!-- /card -->
+    <script src="./script.js"></script>
+  </body>
+</html>
