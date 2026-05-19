@@ -39,7 +39,7 @@ body {
   overflow: hidden;
 }
 .sidebar {
-  background-image: url(./assets/images/bg-sidebar-desktop.svg);
+  background-image: url(./Multi-step-form/assets/images/bg-sidebar-desktop.svg);
   width: 300px;
   height: 600px;
   flex-shrink: 0;
