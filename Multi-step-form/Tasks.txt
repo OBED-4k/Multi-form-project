@@ -1,0 +1,41 @@
+Task: Build a Simple Interactive To‑Do List.(1) Requirements
+- Create the HTML structure:
+- An input field for entering tasks.
+- A button to add the task.
+- A list (<ul>) where tasks will appear.
+- A small <p> element for error messages.
+(2)- Use DOM methods in JavaScript:
+- Select elements using getElementById, querySelector, and querySelectorAll.
+- Add event listeners to the button and form.
+- Validate input (e.g., task must be at least 3 characters).
+- Append new <li> items to the list dynamically.
+- Add a "Delete" button to each task using createElement. - Use removeChild() to delete tasks when the delete button is clicked.
+- Use classList to style completed tasks (e.g., toggle a "done" class when clicked). (3)- Extra challenge:
+- Replace a task with an "Edited" version using replaceChild().
+- Change the color of tasks dynamically with style.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM Practice - To Do List</title>
+  <style>
+    .error { color: red; }
+    .done { text-decoration: line-through; color: green; }
+    button { margin-left: 10px; }
+  </style>
+</head>
+<body>
+  <h1>My To‑Do List</h1>
+  
+  <form id="todoForm">
+    <input type="text" id="taskInput" placeholder="Enter a task">
+    <button type="submit">Add Task</button>
+  </form>
+  
+  <p id="errorText"></p>
+  
+  <ul id="taskList"></ul>
+  
+  <script src="script.js"></script>
+</body>
+</html>
